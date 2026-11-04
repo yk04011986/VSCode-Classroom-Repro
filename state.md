@@ -54,3 +54,15 @@
 - 增加可攜式 PowerShell UTF-8 終端機 profile，設定只作用於該 VS Code。
 - 文件說明下載快取持久化選項及 Codex 雙端對話需安全合併；目前遷移腳本只做初次匯入。
 - 未下載或執行安裝。
+
+## C 槽還原情境補強
+
+- 這次不再只連到外層維護檔：將實際已修好的維護實作整理為 repro 模板，附明確預覽／套用的維護部署入口。保留私人 data 與對話於 D 槽，不存進 Git。
+- 新增 `docs/C-Drive-Restore.md`：逐項記錄本體更新、PowerShell 5.1、UTF-8、CODEX_HOME、工具 PATH、Git 設定、程序關閉和備份交易修正如何延續，以及哪些仍依賴重新登入或人工驗收。
+- 新增 `Check-AfterReset.cmd` 與 `Test-ClassroomPersistence.ps1`；以無 profile、單次 Bypass 的 PowerShell 檢查 D 槽安裝與中文編碼，不依賴 C 槽永久設定。
+- C 槽 VS Code 下載 ZIP 已使用 `Save-ClassroomDownload.ps1` 複製至 D 槽 `installers/classroom-repro/vscode`，固定大小與 SHA-256 檢查通過。未重新下載或安裝。
+- 實際現有環境檢查：0 FAIL、1 WARN（目前安裝缺少 Node）；UTF-8 輸入／輸出／pipeline 都是 65001。私人對話只檢查目錄與檔案數，不讀取或匯入內容；本機報告不進 Git。
+- 下一步：教室真的還原 C 槽後重跑檢查，再確認舊／新對話可開啟並完成必要登入。D 槽保留政策仍待教室管理者確認；完整空白安裝、全離線快取和 SQLite 私人資料恢復仍未全部驗證。
+- 重建下載統一使用 PowerShell `-UseBasicParsing`，GitHub release 查詢有逾時限制，避免依賴 C 槽還原前的瀏覽器初始化狀態。
+- 補正工具重建腳本對唯讀 `$HOME` 的同名變數寫入，改用 `$portableHome`，避免語法檢查通過但首次執行在建立啟動器時失敗。
+- 維護模板合成測試通過：預覽不寫入、10 檔部署、重複套用、衝突拒絕、替換前備份驗證及不安全資料夾名稱拒絕；工具更新重建的啟動器保留 Node/uv PATH 和 VSCODE_PORTABLE_ROOT。

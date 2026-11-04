@@ -4,6 +4,8 @@
 
 ## 快速重建
 
+若教室只還原 C 槽、D 槽環境仍保留，請先讀 [C 槽還原後的恢復與驗收](docs/C-Drive-Restore.md)，執行根目錄 `Check-AfterReset.cmd`，再使用 D 槽啟動器。這份文件記錄實際已修好的項目、維護模板的重套方式、持久下載快取，以及登入／私人對話的恢復限制。
+
 ### 新電腦第一次重建
 
 先把整個 `VSCode-Classroom-Repro` 專案資料夾複製或 clone 到重製後仍會保留的位置，例如 D 槽或 USB。若學校的 D 槽也會清除，請把專案與下載快取放到 USB 或網路磁碟。確認新電腦可連線到 Microsoft、GitHub 和 VS Code Marketplace，並預留下載與安裝空間。
@@ -54,7 +56,7 @@ Bootstrap 會依序：
 
 ## 既有環境更新
 
-本 repro 的 Bootstrap 用於依清單重建，遇到既有不同版本會停止；現有環境的原地更新另由外層 `D:\Night_Trains\@George\VSCode` 管理。外層 [README](../../README.md) 與 [STATE](../../STATE.md) 記錄目前操作方式與狀態，腳本位於外層 `scripts`。若只複製本 repro 到別台電腦，外層維護腳本不會隨附，應使用上面的 Bootstrap 流程。
+本 repro 的 Bootstrap 用於依清單重建，遇到既有不同版本會停止；現有環境的原地更新由外層 `D:\Night_Trains\@George\VSCode` 管理。外層 [README](../../README.md) 與 [STATE](../../STATE.md) 記錄目前操作方式與狀態，腳本位於外層 `scripts`。維護實作現已另存於本專案 `config/maintenance`，可用 `scripts/Install-ClassroomMaintenance.ps1` 預覽、加 `-Apply` 部署；不同既有檔預設拒絕，明確以 `-ReplaceExisting` 套用前會備份。只複製本 repro 到別台電腦時，也能重建這些維護入口；完整環境仍使用 Bootstrap。
 
 | 外層入口 | 用途與限制 |
 | --- | --- |

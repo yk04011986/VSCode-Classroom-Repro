@@ -27,7 +27,7 @@ function Get-VersionOutput([string]$Executable, [string[]]$Arguments) {
 
 function Get-GitHubAsset([string]$Repository, [string]$Tag, [string]$Pattern) {
     $encodedTag = [uri]::EscapeDataString($Tag)
-    $release = Invoke-RestMethod -Uri "https://api.github.com/repos/$Repository/releases/tags/$encodedTag" -Headers @{ 'User-Agent' = 'VSCode-Classroom-Repro' }
+    $release = Invoke-RestMethod -Uri "https://api.github.com/repos/$Repository/releases/tags/$encodedTag" -Headers @{ 'User-Agent' = 'VSCode-Classroom-Repro' } -TimeoutSec 60
     if ($release.tag_name -ne $Tag) { throw "GitHub returned the wrong release tag for ${Repository}: $($release.tag_name)" }
     $asset = $release.assets | Where-Object { $_.name -match $Pattern } | Select-Object -First 1
     if (-not $asset) { throw "No release asset matching $Pattern in ${Repository}@${Tag}." }
@@ -42,7 +42,7 @@ function Save-ReleaseAsset($Asset, [string]$Destination) {
             if ($Asset.size -and $actualSize -ne [int64]$Asset.size) { throw "Cached asset size mismatch: $Destination" }
         }
         else {
-            Invoke-WebRequest -Uri $Asset.browser_download_url -OutFile $partial -TimeoutSec 1800
+            Invoke-WebRequest -UseBasicParsing -Uri $Asset.browser_download_url -OutFile $partial -TimeoutSec 1800
             $actualSize = (Get-Item -LiteralPath $partial).Length
             if ($Asset.size -and $actualSize -ne [int64]$Asset.size) { throw "Downloaded size mismatch for $($Asset.name)." }
             Move-Item -LiteralPath $partial -Destination $Destination
@@ -149,7 +149,7 @@ try {
         if (-not (Test-Path -LiteralPath $nodeArchive)) {
             $nodePartial = "$nodeArchive.$PID.partial"
             try {
-                Invoke-WebRequest -Uri $nodeSpec.downloadUrlTemplate.Replace('{version}', $nodeSpec.version) -OutFile $nodePartial -TimeoutSec 1800
+                Invoke-WebRequest -UseBasicParsing -Uri $nodeSpec.downloadUrlTemplate.Replace('{version}', $nodeSpec.version) -OutFile $nodePartial -TimeoutSec 1800
                 Move-Item -LiteralPath $nodePartial -Destination $nodeArchive
             }
             finally {
@@ -232,8 +232,8 @@ set "RC=%ERRORLEVEL%"
 endlocal & exit /b %RC%
 '@
     $pythonWrapper = $pythonWrapper.Replace('__PYTHON_VERSION__', [string]$manifest.portableTools.python.version)
-    $home = Join-Path $dataRoot 'home'
-    New-Item -ItemType Directory -Force -Path $home, (Join-Path $dataRoot 'user-data'), (Join-Path $dataRoot 'extensions'), (Join-Path $home '.codex') | Out-Null
+    $portableHome = Join-Path $dataRoot 'home'
+    New-Item -ItemType Directory -Force -Path $portableHome, (Join-Path $dataRoot 'user-data'), (Join-Path $dataRoot 'extensions'), (Join-Path $portableHome '.codex') | Out-Null
     $portableScripts = Join-Path $InstallRoot 'scripts'
     New-Item -ItemType Directory -Force -Path $portableScripts | Out-Null
     Copy-Item -LiteralPath (Join-Path (Split-Path -Parent $PSScriptRoot) 'scripts\Initialize-PortableTerminal.ps1') -Destination $portableScripts -Force

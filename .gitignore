@@ -3,3 +3,6 @@ installers/
 *.vsix
 *.partial
 .tmp/
+
+# Local persistence reports describe this installation; source procedures stay tracked.
+output/persistence-check.json

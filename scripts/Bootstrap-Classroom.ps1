@@ -75,7 +75,7 @@ function Install-VSCodeIfMissing {
         $url = $manifest.vscode.downloadUrlTemplate.Replace('{version}', $manifest.vscode.version)
         $partialArchive = "$archivePath.$PID.partial"
         Write-Host "Downloading VS Code $($manifest.vscode.version) from Microsoft's official update service..."
-        Invoke-WebRequest -Uri $url -OutFile $partialArchive -TimeoutSec 1800
+        Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $partialArchive -TimeoutSec 1800
         if ((Get-Item -LiteralPath $partialArchive).Length -lt 100MB) { throw 'Downloaded VS Code archive is unexpectedly small.' }
         Move-Item -LiteralPath $partialArchive -Destination $archivePath
         $partialArchive = $null
