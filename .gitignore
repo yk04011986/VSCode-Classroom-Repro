@@ -1,0 +1,5 @@
+# Large reusable downloads and offline extension packages stay out of source control.
+installers/
+*.vsix
+*.partial
+.tmp/

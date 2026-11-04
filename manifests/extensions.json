@@ -1,0 +1,192 @@
+﻿{
+    "schemaVersion":  1,
+    "capturedFrom":  "Portable-VSCode-1.142.0/data/extensions/extensions.json",
+    "capturedDate":  "2026-11-03",
+    "extensions":  [
+                       {
+                           "id":  "adobe.extendscript-debug",
+                           "version":  "2.1.0",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "anthropic.claude-code",
+                           "version":  "2.1.301",
+                           "targetPlatform":  "win32-x64"
+                       },
+                       {
+                           "id":  "bradgashler.htmltagwrap",
+                           "version":  "1.0.0",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "esbenp.prettier-vscode",
+                           "version":  "12.4.0",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "formulahendry.auto-rename-tag",
+                           "version":  "0.1.10",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "formulahendry.code-runner",
+                           "version":  "0.12.2",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "google.gemini-cli-vscode-ide-companion",
+                           "version":  "0.20.0",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "google.geminicodeassist",
+                           "version":  "2.107.0",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "hwencc.html-tag-wrapper",
+                           "version":  "0.2.3",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "jimmyzjx.ripgrep",
+                           "version":  "0.4.2",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "kevinyang.ctlorem",
+                           "version":  "0.1.2",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "kisstkondoros.vscode-gutter-preview",
+                           "version":  "0.32.2",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "mechatroner.rainbow-csv",
+                           "version":  "3.24.1",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "ms-azuretools.vscode-containers",
+                           "version":  "2.5.3",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "ms-azuretools.vscode-docker",
+                           "version":  "2.0.0",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "ms-ceintl.vscode-language-pack-zh-hant",
+                           "version":  "1.131.2026090407",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "ms-dotnettools.csdevkit",
+                           "version":  "3.40.215",
+                           "targetPlatform":  "win32-x64"
+                       },
+                       {
+                           "id":  "ms-dotnettools.csharp",
+                           "version":  "2.160.4",
+                           "targetPlatform":  "win32-x64"
+                       },
+                       {
+                           "id":  "ms-dotnettools.vscode-dotnet-runtime",
+                           "version":  "3.2.0",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "ms-python.debugpy",
+                           "version":  "2026.6.0",
+                           "targetPlatform":  "win32-x64"
+                       },
+                       {
+                           "id":  "ms-python.python",
+                           "version":  "2026.10.0",
+                           "targetPlatform":  "win32-x64"
+                       },
+                       {
+                           "id":  "ms-python.vscode-pylance",
+                           "version":  "2026.4.1",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "ms-python.vscode-python-envs",
+                           "version":  "1.40.0",
+                           "targetPlatform":  "win32-x64"
+                       },
+                       {
+                           "id":  "ms-vscode.cpptools",
+                           "version":  "1.35.6",
+                           "targetPlatform":  "win32-x64"
+                       },
+                       {
+                           "id":  "ms-vscode.powershell",
+                           "version":  "2025.4.0",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "ms-vscode-remote.remote-containers",
+                           "version":  "0.469.0",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "naumovs.color-highlight",
+                           "version":  "2.8.0",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "openai.chatgpt",
+                           "version":  "26.1021.22027",
+                           "targetPlatform":  "win32-x64"
+                       },
+                       {
+                           "id":  "openai.codex-audio",
+                           "version":  "26.1021.22027",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "pkief.material-icon-theme",
+                           "version":  "5.40.0",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "ritwickdey.liveserver",
+                           "version":  "5.7.10",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "rooveterinaryinc.roo-cline",
+                           "version":  "3.54.0",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "saoudrizwan.claude-dev",
+                           "version":  "4.1.26",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "tomoki1207.pdf",
+                           "version":  "1.2.2",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "twxs.cmake",
+                           "version":  "0.0.17",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "usernamehw.errorlens",
+                           "version":  "3.30.0",
+                           "targetPlatform":  "undefined"
+                       },
+                       {
+                           "id":  "zaferayan.lorem-picsum",
+                           "version":  "1.0.1",
+                           "targetPlatform":  "undefined"
+                       }
+                   ]
+}

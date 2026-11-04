@@ -1,0 +1,34 @@
+﻿{
+    "editor.formatOnSave":  true,
+    "editor.defaultFormatter":  "esbenp.prettier-vscode",
+    "[python]":  {
+                     "editor.defaultFormatter":  "ms-python.python"
+                 },
+    "files.autoSave":  "afterDelay",
+    "editor.wordWrap":  "on",
+    "editor.fontSize":  24,
+    "git.autofetch":  true,
+    "chat.unifiedAgentsBar.enabled":  true,
+    "terminal.integrated.profiles.windows":  {
+                                                 "Portable PowerShell 5.1":  {
+                                                                                 "path":  "powershell.exe",
+                                                                                 "args":  [
+                                                                                              "-NoLogo",
+                                                                                              "-NoProfile",
+                                                                                              "-NoExit",
+                                                                                              "-ExecutionPolicy",
+                                                                                              "Bypass",
+                                                                                              "-File",
+                                                                                              "${env:VSCODE_PORTABLE_ROOT}scripts\\Initialize-PortableTerminal.ps1"
+                                                                                          ]
+                                                                             },
+                                                 "Portable CMD":  {
+                                                                      "path":  "cmd.exe",
+                                                                      "args":  [
+                                                                                   "/k",
+                                                                                   "chcp 65001 \u003enul"
+                                                                               ]
+                                                                  }
+                                             },
+    "terminal.integrated.defaultProfile.windows":  "Portable PowerShell 5.1"
+}

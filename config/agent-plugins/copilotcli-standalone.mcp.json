@@ -1,0 +1,28 @@
+{
+  "mcpServers": {
+    "io.github.github/github-mcp-server": {
+      "type": "http",
+      "transport": "http",
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "makenotion/notion-mcp-server": {
+      "type": "http",
+      "transport": "http",
+      "url": "https://mcp.notion.com/sse"
+    },
+    "microsoft/markitdown": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "markitdown-mcp@0.0.1a4"
+      ]
+    },
+    "microsoft/playwright-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    }
+  }
+}

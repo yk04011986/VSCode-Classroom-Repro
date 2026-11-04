@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "capturedDate": "2026-11-03",
+  "source": "Portable-VSCode-1.142.0/data/agent-plugins",
+  "restoration": "VS Code account-synced customization; restore by signing in and allowing the agent customization sync to repopulate data/agent-plugins. The nonce-named cache folders are intentionally not copied.",
+  "customizations": [
+    {
+      "host": "copilotcli",
+      "name": "VS Code Synced Data",
+      "restoreFrom": "VS Code account sync"
+    },
+    {
+      "host": "copilotcli",
+      "name": "VS Code Standalone Customizations",
+      "restoreFrom": "VS Code account sync",
+      "mcpConfigReference": "../config/agent-plugins/copilotcli-standalone.mcp.json"
+    }
+  ],
+  "notes": [
+    "VS Code currently generates plugin folder IDs and nonces; do not hard-code them in a restore script.",
+    "MCP server authentication and account sign-in are not included in this repository.",
+    "The snapshot records configuration shape only; confirm current server access and account policy before enabling these servers."
+  ]
+}
