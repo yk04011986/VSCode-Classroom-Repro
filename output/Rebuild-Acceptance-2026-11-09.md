@@ -5,6 +5,7 @@
 | Check | Result |
 | --- | --- |
 | Conversation retention after restart | User confirmed the saved Codex conversation remains accessible. |
+| Classroom storage policy | User confirmed on 2026-11-09 that D: is not restored; C: is restored. D-drive persistence is a confirmed deployment premise. |
 | Node on the retained installation | Installed v24.22.2 from the official archive; pinned SHA-256 matched. npm and npx both report 11.19.1. |
 | Retained installation persistence checks | 0 failures, 0 warnings. Console input, output and native pipeline all use code page 65001. |
 | Isolated rebuild | Started from an empty workspace `.tmp` target; after correcting CLI invocation and preserving missing packages, Bootstrap completed with exit code 0. |

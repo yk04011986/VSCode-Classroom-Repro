@@ -1,6 +1,6 @@
 # C 槽還原後的恢復與驗收
 
-適用情境：教室電腦重開機後 C 槽還原，D 槽與 `D:\Night_Trains\@George\VSCode` 完整保留。這個前提需由教室管理者確認；若 D 槽也會被還原，請先把整套環境、repro 與私人資料備份到 USB 或其他持久儲存。
+適用情境：教室電腦重開機後 C 槽還原，D 槽與 `D:\Night_Trains\@George\VSCode` 保留。2026-11-09 使用者已確認 D 槽不會還原，這項儲存政策已確認。若未來換電腦或還原政策改變，需重新確認持久儲存位置；私人資料仍建議另備份至不同儲存裝置。
 
 ## 目前已修好與保存的位置
 
@@ -36,7 +36,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Test-Classroom
   -ReportPath '.\output\persistence-check.json'
 ```
 
-檢查分為 PASS、WARN、FAIL、MANUAL。FAIL 會回傳非零退出碼；WARN 與 MANUAL 表示待補功能或仍需操作驗收。這不是實際還原 C 槽的模擬，也不證明教室一定保留 D 槽。
+檢查分為 PASS、WARN、FAIL、MANUAL。FAIL 會回傳非零退出碼；WARN 與 MANUAL 表示待補功能或仍需操作驗收。這不是實際還原 C 槽的模擬；D 槽保留政策依使用者確認記錄，並非由檢查腳本推定。
 
 ## 修復檔遺失時
 
