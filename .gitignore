@@ -6,3 +6,7 @@ installers/
 
 # Local persistence reports describe this installation; source procedures stay tracked.
 output/persistence-check.json
+output/clean-bootstrap.log
+output/vsix-cache-report.json
+output/acceptance-summary.json
+output/offline-cache-report.json

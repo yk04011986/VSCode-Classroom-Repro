@@ -8,7 +8,7 @@ param(
 $ErrorActionPreference = 'Stop'
 $manifestPath = Join-Path $PSScriptRoot '..\manifests\extensions.json'
 $manifest = Get-Content -LiteralPath $manifestPath -Raw -Encoding utf8 | ConvertFrom-Json
-$code = Join-Path $InstallRoot 'Code.exe'
+$code = Join-Path $InstallRoot 'bin\code.cmd'
 $userData = Join-Path $InstallRoot 'data\user-data'
 $extensionsDir = Join-Path $InstallRoot 'data\extensions'
 $vsixCache = Join-Path $CacheRoot 'extensions'
@@ -23,7 +23,7 @@ function Get-InstalledExtensions {
     return $map
 }
 
-if (-not (Test-Path -LiteralPath $code)) { throw "Code.exe is missing: $code" }
+if (-not (Test-Path -LiteralPath $code)) { throw "VS Code CLI is missing: $code" }
 New-Item -ItemType Directory -Force -Path $userData, $extensionsDir, $vsixCache | Out-Null
 $oldElectronRunAsNode = [Environment]::GetEnvironmentVariable('ELECTRON_RUN_AS_NODE', 'Process')
 [Environment]::SetEnvironmentVariable('ELECTRON_RUN_AS_NODE', $null, 'Process')

@@ -6,6 +6,8 @@
 
 若教室只還原 C 槽、D 槽環境仍保留，請先讀 [C 槽還原後的恢復與驗收](docs/C-Drive-Restore.md)，執行根目錄 `Check-AfterReset.cmd`，再使用 D 槽啟動器。這份文件記錄實際已修好的項目、維護模板的重套方式、持久下載快取，以及登入／私人對話的恢復限制。
 
+2026-11-09 已完成實際隔離空白重建及 37 個擴充版本驗證，詳見 [驗收報告](output/Rebuild-Acceptance-2026-11-09.md)。完整離線仍有限制，請使用 [離線快取盤點](docs/Offline-Cache.md) 分別確認檔案完整性、來源信任與網路需求。
+
 ### 新電腦第一次重建
 
 先把整個 `VSCode-Classroom-Repro` 專案資料夾複製或 clone 到重製後仍會保留的位置，例如 D 槽或 USB。若學校的 D 槽也會清除，請把專案與下載快取放到 USB 或網路磁碟。確認新電腦可連線到 Microsoft、GitHub 和 VS Code Marketplace，並預留下載與安裝空間。

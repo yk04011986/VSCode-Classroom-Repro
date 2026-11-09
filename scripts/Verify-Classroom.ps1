@@ -14,7 +14,9 @@ $signature = Get-AuthenticodeSignature -FilePath $code
 $publisher = ''
 if ($signature.SignerCertificate) { $publisher = $signature.SignerCertificate.GetNameInfo([System.Security.Cryptography.X509Certificates.X509NameType]::SimpleName, $false) }
 if ($signature.Status -ne 'Valid' -or $publisher -ne $manifest.vscode.expectedPublisher) { throw "VS Code signature mismatch: $($signature.Status), $publisher" }
-$productFile = Get-ChildItem -LiteralPath $InstallRoot -Filter 'product.json' -File -Recurse | Where-Object { $_.FullName -match '\\resources\\app\\product\.json$' } | Select-Object -First 1
+$productCandidates = @((Join-Path $InstallRoot 'resources\app\product.json'))
+$productCandidates += @(Get-ChildItem -LiteralPath $InstallRoot -Directory | Where-Object { $_.Name -match '^[0-9a-f]{10,40}$' } | ForEach-Object { Join-Path $_.FullName 'resources\app\product.json' })
+$productFile = $productCandidates | Where-Object { Test-Path -LiteralPath $_ -PathType Leaf } | Select-Object -First 1 | ForEach-Object { Get-Item -LiteralPath $_ }
 if (-not $productFile) { throw 'Could not find VS Code resources\app\product.json.' }
 $product = Get-Content -LiteralPath $productFile.FullName -Raw -Encoding utf8 | ConvertFrom-Json
 if (-not $product.version -or -not $product.commit) { $package = Get-Content -LiteralPath (Join-Path (Split-Path -Parent $productFile.FullName) 'package.json') -Raw -Encoding utf8 | ConvertFrom-Json; if (-not $product.version) { $product | Add-Member -NotePropertyName version -NotePropertyValue $package.version -Force }; if (-not $product.commit) { $product | Add-Member -NotePropertyName commit -NotePropertyValue $package.commit -Force } }

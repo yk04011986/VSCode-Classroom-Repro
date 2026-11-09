@@ -2,7 +2,8 @@
 param(
     [string]$InstallRoot,
     [string]$CacheRoot,
-    [string]$ReportPath
+    [string]$ReportPath,
+    [switch]$ConversationRestartConfirmed
 )
 $ErrorActionPreference='Stop'
 $project=Split-Path $PSScriptRoot -Parent
@@ -61,7 +62,10 @@ foreach ($relative in @('portable-tools\Git\cmd\git.exe','portable-tools\uv\uv.e
 $codex=Join-Path $InstallRoot 'data\home\.codex'
 $sessions=@(Get-ChildItem -LiteralPath (Join-Path $codex 'sessions') -File -Recurse -ErrorAction SilentlyContinue)
 Record 'Codex D-drive storage' $(if(Test-Path -LiteralPath $codex){'PASS'}else{'WARN'}) "Storage location configured under InstallRoot; session files: $($sessions.Count). Private conversation content was not read."
-Record 'Codex restore limit' 'MANUAL' 'Open an old conversation after reset and create/reopen a new one. SQLite rollout paths and dual-store merges need separate validation.'
+if ($ConversationRestartConfirmed) {
+    Record 'Codex restart retention' 'PASS' 'User confirmed the saved conversation remained accessible after restarting. This does not independently prove a C-drive restore.'
+}
+Record 'Codex restore limit' 'MANUAL' 'Conversation access after an actual C-drive restore, SQLite rollout paths and dual-store merges require separate validation.'
 $cache=Join-Path $CacheRoot "vscode\VSCode-$($manifest.vscode.version)-win32-x64.zip"
 if (Test-Path -LiteralPath $cache) {
     $match=(Get-FileHash -LiteralPath $cache -Algorithm SHA256).Hash -ieq $manifest.vscode.sha256

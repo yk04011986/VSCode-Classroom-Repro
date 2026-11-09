@@ -16,7 +16,7 @@
 | 更新交易 | PowerShell 5.1 File.Replace 使用 NullString，保留備份、鎖與日誌 | 維護模板納入 repro；重新部署不必靠先前對 C 槽做過的設定 |
 | 背景 Code.exe | 本體更新支援輸入 UPDATE 確認後關閉同安裝路徑的程序 | 先儲存工作；未確認不會停止程序；重跑已安裝版本會直接提示 |
 | Git 姓名／Email | 可攜式設定在 data/home/.gitconfig | D 槽檔案保留；GitHub 登入憑證另行處理 |
-| Node/npm/npx | repro 鎖定 Node 24.22.2，目前安裝尚未具備 | 這是既有缺口，不能標成整套 repro 已通過；需要時依固定版本工具安裝流程補齊 |
+| Node/npm/npx | 2026-11-09 已安裝 Node 24.22.2、npm/npx 11.19.1，下載摘要比對通過 | 啟動器已納入 Node PATH；下次從 D 槽啟動器重新開啟 VS Code 後繼承設定 |
 
 日常使用的實際修復檔位於外層 `scripts` 與安裝根 `portable-tools`／`scripts`。repro 的 `config/maintenance` 保存可部署維護模板，`Install-ClassroomMaintenance.ps1` 負責重建維護入口；`Install-PortableTools.ps1` 負責重建工具、內層啟動器與 UTF-8 初始化。這些程式碼可進 Git；實際 `data`、對話、記憶及登入資料不進 Git。
 
@@ -68,6 +68,10 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Save-Classroom
 ```
 
 ## 本次驗證的界線
+
+2026-11-09：使用者確認已重開，Codex 對話保存且可接續。這是對話重開留存的實際驗收；是否由教室還原機制真正還原 C 槽仍未獨立確認。檢查腳本可加 `-ConversationRestartConfirmed` 記錄此使用者驗收，其他人工還原檢查仍保留。
+
+同日 Node 已補齊，現有持久性檢查更新為 0 FAIL、0 WARN。隔離空白重建最終通過本體、工具及全部 37 個清單版本的擴充功能驗證；過程修正 CLI 呼叫，並使用保存的 VSIX 解決已無法由 Marketplace 取得的 Roo Code 舊版。37 個固定版本的 VSIX 已保存於 D 槽快取，但尚未因此宣稱完全離線可重建，詳見 [驗收報告](../output/Rebuild-Acceptance-2026-11-09.md)。
 
 2026-11-04 的現有環境檢查：0 個 FAIL、1 個 WARN（尚缺 Node）；UTF-8 的 Console 輸入／輸出／pipeline 都是 65001。實際安裝的版本、D 槽設定與對話目錄、Git 設定檔及 VS Code ZIP 快取均確認存在。此結果沒有實際還原 C 槽，也未執行空白環境的完整安裝。
 

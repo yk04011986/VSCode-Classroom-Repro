@@ -20,9 +20,9 @@ $partialArchive = $null
 $stageRoot = $null
 
 function Get-ProductInfo([string]$Root) {
-    $productFile = Get-ChildItem -LiteralPath $Root -Filter 'product.json' -File -Recurse -ErrorAction SilentlyContinue |
-        Where-Object { $_.FullName -match '\\resources\\app\\product\.json$' } |
-        Select-Object -First 1
+    $candidates = @((Join-Path $Root 'resources\app\product.json'))
+    $candidates += @(Get-ChildItem -LiteralPath $Root -Directory | Where-Object { $_.Name -match '^[0-9a-f]{10,40}$' } | ForEach-Object { Join-Path $_.FullName 'resources\app\product.json' })
+    $productFile = $candidates | Where-Object { Test-Path -LiteralPath $_ -PathType Leaf } | Select-Object -First 1 | ForEach-Object { Get-Item -LiteralPath $_ }
     if (-not $productFile) { throw "Could not find resources\app\product.json below $Root." }
     $product = Get-Content -LiteralPath $productFile.FullName -Raw -Encoding utf8 | ConvertFrom-Json
     $packagePath = Join-Path (Split-Path -Parent $productFile.FullName) 'package.json'
