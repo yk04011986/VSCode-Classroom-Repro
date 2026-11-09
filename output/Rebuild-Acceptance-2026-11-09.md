@@ -36,4 +36,6 @@ The test used separate user data, extensions, and CODEX_HOME. It did not import 
 
 Local reports under `output/` include `persistence-check.json`, `offline-cache-report.json`, `vsix-cache-report.json` and `clean-bootstrap.log`; they are ignored by Git. This sanitized acceptance summary is safe to version.
 
-Use `Check-AfterReset.cmd` after the next classroom reset. Follow `docs/C-Drive-Restore.md` for recovery and `docs/Offline-Cache.md` for the remaining offline work. Reopen daily-use VS Code through its portable launcher to inherit the newly added Node PATH.
+After the user reopened daily-use VS Code, direct command resolution confirmed Node 24.22.2 and npm/npx 11.19.1, with Node, Git and Python resolving to D-drive portable tools. HOME, USERPROFILE, CODEX_HOME and VSCODE_PORTABLE_ROOT also resolved to the retained portable installation. Node PATH inheritance after restart is now verified; an actual C-drive restore remains a separate acceptance step.
+
+Use `Check-AfterReset.cmd` after the next classroom reset. Follow `docs/C-Drive-Restore.md` for recovery and `docs/Offline-Cache.md` for the remaining offline work.

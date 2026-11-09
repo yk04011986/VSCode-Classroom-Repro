@@ -85,4 +85,5 @@
 - `Save-ExtensionCache.py` 已將 37 個清單版本的原始 VSIX 保存至持久快取，不重新打包已安裝擴充功能。檔案身份及本機雜湊核對通過，未將 VSIX 放進 Git。
 - `Test-OfflineCache.ps1` 盤點為 4 PASS、39 UNVERIFIED、0 MISSING、0 FAIL；全離線 Bootstrap 仍為 false，來源信任與本機雜湊一致性分別標示。
 - 已將維護模板正式同步至 D 槽入口，先備份差異檔，確保下次工具更新仍保留 Node/uv PATH 與 VSCODE_PORTABLE_ROOT；部署時未執行更新器或關閉正式 VS Code。
+- 使用者再次重開 VS Code 後，已實測 Node 24.22.2、npm/npx 11.19.1 可直接呼叫；Node、Git、Python 均解析至 D 槽 portable-tools，HOME、USERPROFILE、CODEX_HOME 與 VSCODE_PORTABLE_ROOT 也已正確載入。這是重開後環境繼承驗收，不等同實際 C 槽還原驗收。
 - 下一步：處理完全離線 Python／GitHub metadata 來源與額外依賴；若需要更新固定擴充快照，另行核對目前兩個版本差異；實際 C 槽還原後仍要做功能與登入驗收。
