@@ -66,3 +66,9 @@
 - 重建下載統一使用 PowerShell `-UseBasicParsing`，GitHub release 查詢有逾時限制，避免依賴 C 槽還原前的瀏覽器初始化狀態。
 - 補正工具重建腳本對唯讀 `$HOME` 的同名變數寫入，改用 `$portableHome`，避免語法檢查通過但首次執行在建立啟動器時失敗。
 - 維護模板合成測試通過：預覽不寫入、10 檔部署、重複套用、衝突拒絕、替換前備份驗證及不安全資料夾名稱拒絕；工具更新重建的啟動器保留 Node/uv PATH 和 VSCODE_PORTABLE_ROOT。
+
+## Project agent instructions
+
+- Rewrote `AGENTS.md` in English and integrated applicable workspace rules for persistent storage, reproducible repairs, safe updates, private conversation recovery, verification, and handoff.
+- Kept versions, installation paths, and detailed recovery steps in their existing manifests and documentation; the instructions reference those sources rather than duplicate current values.
+- Preserved the original safeguards for official downloads, pinned extensions, user data, explicit Fusion installation, and checks without running installers. No installation or private data was changed.
